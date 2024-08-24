@@ -14,9 +14,44 @@ const WatchedList = () => {
                         title : "Enna Yanna Apith Ekka",
                         creator : "Dilu Beats",
                         img : defaultVideoImg
+                    },
+                    {
+                        title : "Enna Yanna Apith Ekka",
+                        creator : "Dilu Beats",
+                        img : defaultVideoImg
                     }
                 ]
-            }
+            },
+            {
+                date : "Yesterday",
+                video : [
+                    {
+                        title : "Enna Yanna Apith Ekka",
+                        creator : "Dilu Beats",
+                        img : defaultVideoImg
+                    },
+                    {
+                        title : "Enna Yanna Apith Ekka",
+                        creator : "Dilu Beats",
+                        img : defaultVideoImg
+                    }
+                ]
+            },
+        {
+            date : "Last Week",
+            video : [
+                {
+                    title : "Enna Yanna Apith Ekka",
+                    creator : "Dilu Beats",
+                    img : defaultVideoImg
+                },
+                {
+                    title : "Enna Yanna Apith Ekka",
+                    creator : "Dilu Beats",
+                    img : defaultVideoImg
+                }
+            ]
+        }
     ]);
 
     return (
@@ -25,13 +60,16 @@ const WatchedList = () => {
                 <PlayListSvg/>
                 <h2>Watched</h2>
             </div>
-            <div className="list">
+            <div className="list d-flex flex-column gap-3 mt-2">
                 {
                     twoDArray.map((data, index) => {
                         return(
                             <div key={index}>
-                                <h3>{data.date}</h3>
-                                <div className={"d-flex gap-4"}>
+                                <h3 className={"d-flex align-items-center gap-3 justify-content-end"}>
+                                    <hr/>
+                                    {data.date}
+                                </h3>
+                                <div className={"d-flex flex-column gap-3"}>
                                     {
                                         data.video.map((video, index) => {
                                             return(

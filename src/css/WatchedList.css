@@ -48,3 +48,18 @@
     font-weight: 600;
     letter-spacing: 0.3px;
 }
+
+#watchedList hr{
+    height: 3px;
+    width: 40%;
+    background: #2B2B2B;
+}
+
+#watchedList .list{
+    max-height: 94%;
+    overflow-y: scroll;
+}
+
+#watchedList .list::-webkit-scrollbar{
+    width: 0;
+}
