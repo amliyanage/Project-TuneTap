@@ -1,0 +1,50 @@
+
+#watchedList h2{
+    color: #FFF;
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.48px;
+}
+
+#watchedList .card{
+    border-radius: 10px;
+    background: #1B1B1B;
+}
+
+#watchedList .card img{
+    width: 134px;
+    height: 96px;
+}
+
+#watchedList .card h4{
+    color: #7E7E7E;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.24px;
+    margin-bottom: 2px;
+}
+
+#watchedList .card h3{
+    color: #FFF;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+#watchedList .card button{
+    border-radius: 5px;
+    background: #41FF6A;
+    border: 0;
+    padding: 0.1vw 1.2vw;
+}
+
+#watchedList h3{
+    color: #2A2A2A;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
