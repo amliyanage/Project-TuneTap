@@ -24,3 +24,25 @@ export const PlaySvg = () =>{
         </svg>
     )
 }
+
+export const SearchSvg = () =>{
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+            <path
+                d="M14.5064 14.5228L20 20M16.8333 8.91667C16.8333 13.2889 13.2889 16.8333 8.91667 16.8333C4.54441 16.8333 1 13.2889 1 8.91667C1 4.54441 4.54441 1 8.91667 1C13.2889 1 16.8333 4.54441 16.8333 8.91667Z"
+                stroke="#41FF6A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+    )
+}
+
+export const DownloadSvg = () =>{
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+            <path
+                d="M2.25 11.875C2.25 14.1141 2.25 15.2337 2.90901 15.9294C3.56802 16.625 4.62868 16.625 6.75 16.625H11.25C13.3713 16.625 14.4319 16.625 15.091 15.9294C15.75 15.2337 15.75 14.1141 15.75 11.875"
+                stroke="black" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M9 2.375V12.6667M9 12.6667L12 9.20313M9 12.6667L6 9.20313" stroke="black" strokeWidth="1.75"
+                  strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+    )
+}
