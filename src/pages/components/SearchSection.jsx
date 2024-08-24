@@ -5,7 +5,7 @@ import SearchResultCard from "./cards/SearchResultCard.jsx";
 import axios from "axios";
 import debounce from "lodash.debounce";
 
-const SearchSection = () => {
+const SearchSection = ({handelVideoData}) => {
     const [query, setQuery] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [nextPageToken, setNextPageToken] = useState("");
@@ -76,7 +76,7 @@ const SearchSection = () => {
             </div>
             <div className="list">
                 {searchResults.map((result, index) => (
-                    <SearchResultCard key={index} data={result} />
+                    <SearchResultCard key={index} data={result} currentVideoData={handelVideoData} />
                 ))}
                 {loading && <p>Loading...</p>}
             </div>

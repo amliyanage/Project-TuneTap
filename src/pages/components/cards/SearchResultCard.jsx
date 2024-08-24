@@ -1,7 +1,9 @@
 import {DownloadSvg} from "../../../util/Svg.jsx";
 
-const SearchResultCard = ({ data }) => {
-
+const SearchResultCard = ({ data , currentVideoData }) => {
+    const handelDownload = () => {
+        currentVideoData(data);
+    }
     return(
         <div className={"card p-2"}>
             <img src={data.img} alt=""/>
@@ -17,7 +19,7 @@ const SearchResultCard = ({ data }) => {
                     <h3>{data.views}</h3>
                 </div>
             </div>
-            <button className={"d-flex align-items-center justify-content-center gap-2 mt-2"}>
+            <button onClick={handelDownload} className={"d-flex align-items-center justify-content-center gap-2 mt-2"}>
                 <DownloadSvg/>
                 Download
             </button>

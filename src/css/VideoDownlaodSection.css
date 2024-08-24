@@ -1,4 +1,4 @@
-#VideoDownloadSection img{
+#VideoDownloadSection iframe{
     width: 20vw;
     height: 12vw;
 }
@@ -22,7 +22,7 @@
 
 #VideoDownloadSection .downloadOption{
     background: #1B1B1B;
-    height: 55%;
+    height: auto;
     border-radius: 8px;
 }
 
@@ -54,4 +54,8 @@
     font-size: 18px;
     font-weight: 600;
     letter-spacing: 0.36px;
+}
+
+#VideoDownloadSection .videoTitle{
+    max-width: 20vw;
 }
