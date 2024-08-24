@@ -1,6 +1,7 @@
 import {DownloadSvg} from "../../../util/Svg.jsx";
 
 const SearchResultCard = ({ data }) => {
+
     return(
         <div className={"card p-2"}>
             <img src={data.img} alt=""/>

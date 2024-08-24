@@ -63,10 +63,34 @@
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 20px;
-    height: 91%;
+    height: 89%;
     overflow-y: scroll;
 }
 
 #SearchSection .list::-webkit-scrollbar{
     width: 0;
+}
+
+#SearchSection .search + button{
+    background: transparent;
+    border-radius: 10px;
+    color: #41FF6A;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.24px;
+    padding: 0.5vw;
+    border: 1.2px solid #41FF6A;
+}
+
+#SearchSection .LoadMore{
+    padding: 4px 10px;
+    background: #41FF6A;
+    border-radius: 8px;
+    color: #000;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.24px;
+    border: 0;
 }
