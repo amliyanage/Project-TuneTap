@@ -15,7 +15,9 @@ const VideoSearch = () => {
 
     return(
         <section className={"p-4 d-flex justify-content-between"}>
-            <WatchedList/>
+            {
+                videoData && (<WatchedList videoData={videoData}/>)
+            }
             <SearchSection handelVideoData={handelVideoData}/>
             {
                 videoData && (<VideoDownloadSection videoData={videoData}/>)

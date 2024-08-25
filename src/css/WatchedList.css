@@ -10,6 +10,7 @@
 #watchedList .card{
     border-radius: 10px;
     background: #1B1B1B;
+    width: 20vw;
 }
 
 #watchedList .card img{
