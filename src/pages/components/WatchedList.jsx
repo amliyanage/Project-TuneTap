@@ -3,11 +3,15 @@ import "../../css/WatchedList.css";
 import { useEffect, useState } from "react";
 import WatchedListCard from "./cards/WatchedListCard.jsx";
 
-const WatchedList = ({ videoData }) => {
+const WatchedList = ({ videoData , handelVideoDataOnWatchedList }) => {
     const [twoDArray, setTwoDArray] = useState(() => {
         const savedData = localStorage.getItem("watchedList");
         return savedData ? JSON.parse(savedData) : [];
     });
+
+    const handelPlayBack = (data) => {
+        handelVideoDataOnWatchedList(data);
+    }
 
     useEffect(() => {
         localStorage.setItem("watchedList", JSON.stringify(twoDArray));
@@ -76,7 +80,7 @@ const WatchedList = ({ videoData }) => {
                         </h3>
                         <div className={"d-flex flex-column gap-3"}>
                             {data.video.map((video, index) => (
-                                <WatchedListCard key={index} data={video} />
+                                <WatchedListCard key={index} data={video} handelPlayBack={handelPlayBack} />
                             ))}
                         </div>
                     </div>

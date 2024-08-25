@@ -7,16 +7,21 @@ import {useState} from "react";
 const VideoSearch = () => {
 
     const [videoData, setVideoData] = useState({});
+    const [watchedListData, setWatchedListData] = useState([]);
 
     const handelVideoData = (data) => {
-        alert("Video Data" + data);
+        setVideoData(data);
+        setWatchedListData(data);
+    }
+
+    const playBack = (data) => {
         setVideoData(data);
     }
 
     return(
         <section className={"p-4 d-flex justify-content-between"}>
             {
-                videoData && (<WatchedList videoData={videoData}/>)
+                watchedListData && (<WatchedList videoData={watchedListData} handelVideoDataOnWatchedList={playBack}/>)
             }
             <SearchSection handelVideoData={handelVideoData}/>
             {

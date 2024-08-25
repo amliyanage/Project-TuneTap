@@ -1,6 +1,11 @@
 import {PlaySvg} from "../../../util/Svg.jsx";
 
-const WatchedListCard = ({ data }) => {
+const WatchedListCard = ({ data , handelPlayBack }) => {
+
+    const handelPlay = () => {
+        handelPlayBack(data);
+    }
+
     return(
         <div className={"card d-flex flex-row align-items-center p-2 gap-3"}>
             <div>
@@ -15,7 +20,7 @@ const WatchedListCard = ({ data }) => {
                         <h3>{data.creator}</h3>
                     </div>
                     <div className={"m-0"}>
-                        <button><PlaySvg/></button>
+                        <button onClick={handelPlay}><PlaySvg/></button>
                     </div>
                 </div>
             </div>
