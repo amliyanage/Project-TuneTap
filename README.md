@@ -1,4 +1,4 @@
-# YouTube Video Downloader
+# Project-TuneTap ( YouTube Video Downloader )
 
 This project allows users to search for YouTube videos and download them. The backend server handles video information and format options, while the frontend, built with React and Vite, provides a modern interface for interacting with the service.
 
@@ -22,7 +22,7 @@ The backend server is developed using Node.js and Express, utilizing `ytdl-core`
 
 The frontend is developed with React and Vite, offering a fast and responsive user interface for searching and downloading YouTube videos.
 
-- **Repository**: [Video_Downloader](https://github.com/amliyanage/Video_Downloader.git)
+- **Repository**: [Video_Downloader](https://github.com/amliyanage/Project-TuneTap.git)
 
 ## Getting Started
 
@@ -127,4 +127,4 @@ Feel free to open issues or submit pull requests if you have any improvements or
 
 ## Contact
 
-If you have any questions, please reach out to your-email@example.com.
+If you have any questions, please reach out to ashenmliyanage@gmail.com.
