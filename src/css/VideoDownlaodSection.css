@@ -26,8 +26,13 @@
 
 #VideoDownloadSection .downloadOption{
     background: #1B1B1B;
-    height: auto;
     border-radius: 8px;
+    height: 40vh;
+    overflow-y: scroll;
+}
+
+#VideoDownloadSection .downloadOption::-webkit-scrollbar {
+    width: 0;
 }
 
 #VideoDownloadSection .downloadOption h4{

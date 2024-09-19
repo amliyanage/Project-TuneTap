@@ -1,44 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { DownloadSvg } from "../../util/Svg.jsx";
 import '../../css/VideoDownlaodSection.css';
+import axios from "axios";
 
 const VideoDownloadSection = ({ videoData }) => {
     const [formats, setFormats] = useState([]);
+    const [currentVideo, setCurrentVideo] = useState(null);
 
     useEffect(() => {
         const fetchVideoOptions = async () => {
             try {
                 console.log(`Fetching video options for videoId: ${videoData.videoId}`);
-
-                const response = await fetch(`http://localhost:3001/video-options/${videoData.videoId}`);
-                console.log('Response status:', response.status);
-
-                if (!response.ok) {
-                    console.error('Failed to fetch video options. Status:', response.status);
-                    return;
-                }
-
-                const data = await response.json();
-                console.log('Fetched formats:', data.formats);
-
-                // Filter and get unique formats based on quality label
-                const filteredFormats = [];
-                const seenQualities = new Set();
-
-                data.formats.forEach(format => {
-                    const quality = format.qualityLabel;
-                    const mimeType = format.mimeType || '';
-
-                    if (
-                        (['1440p', '1080p', '720p', '480p'].includes(quality) || mimeType.includes('audio/mp4')) &&
-                        !seenQualities.has(quality || mimeType)
-                    ) {
-                        seenQualities.add(quality || mimeType);
-                        filteredFormats.push(format);
+                const url = JSON.stringify(`https://www.youtube.com/watch?v=${videoData.videoId}`);
+                const response = await axios.post("http://localhost:8000/",url,{
+                    headers: {
+                        'Content-Type': 'application/json',
                     }
-                });
+                })
 
-                setFormats(filteredFormats);
+                console.log(response.data);
+                setFormats(response.data);
+                setCurrentVideo(videoData.videoId);
+
             } catch (error) {
                 console.error('Error fetching video options:', error);
             }
@@ -49,17 +32,16 @@ const VideoDownloadSection = ({ videoData }) => {
         }
     }, [videoData]);
 
-    const handleDownload = (url) => {
-        console.log('Downloading from URL:', url);
-        window.open(url, '_blank');
+    const handleDownload = async (format) => {
+        const url = `http://localhost:8000/?url=https://www.youtube.com/watch?v=${currentVideo}&format=${format}`
+        const serverResponce = await axios.get(url);
+        const { response } = serverResponce.data;
+        if (response){
+            alert("Download Started");
+            window.open(response, '_blank');
+        }
     };
 
-    const formatSize = (size) => {
-        if (size) {
-            return (size / (1024 * 1024)).toFixed(2) + 'MB';
-        }
-        return 'Unknown size';
-    };
 
     return (
         <div id={"VideoDownloadSection"} className={"p-3"}>
@@ -82,33 +64,43 @@ const VideoDownloadSection = ({ videoData }) => {
                 </div>
             </div>
             <div className="downloadOption p-3 pt-4">
-                <h4 className={"mb-3"}>Video</h4>
-                <div className={"d-flex flex-column gap-3"}>
-                    {formats
-                        .filter(format => format.hasVideo)
-                        .map((format) => (
-                            <div key={format.itag} className={"d-flex justify-content-between"}>
-                                <h6>{format.qualityLabel}</h6>
-                                <h6>{formatSize(format.contentLength)}</h6>
-                                <button onClick={() => handleDownload(format.url)}>
+                <h4 className="mb-3">Video</h4>
+                <div className="d-flex flex-column gap-3">
+                    {formats && formats.mp4 && (
+                        Object.entries(formats.mp4).map(([resolution, size]) => (
+                            <div key={resolution} className="d-flex justify-content-between">
+                                <h6>{resolution}</h6>
+                                <h6>{`${size} MB`}</h6>
+                                <button onClick={() => handleDownload(resolution)}>
                                     <DownloadSvg />
                                 </button>
                             </div>
-                        ))}
+                        ))
+                    )}
                 </div>
-                <h4 className={"mb-3 mt-4"}>Audio</h4>
+                <h4 className="mb-3 mt-4">Audio</h4>
                 <div>
-                    {formats
-                        .filter(format => format.hasAudio && !format.hasVideo)
-                        .map((format) => (
-                            <div key={format.itag} className={"d-flex justify-content-between"}>
-                                <h6>MP3</h6>
-                                <h6>{formatSize(format.contentLength)}</h6>
-                                <button onClick={() => handleDownload(format.url)}>
-                                    <DownloadSvg />
+                    {formats && formats.mp3 && (
+                        <div className="d-flex justify-content-between">
+                            <h6>MP3</h6>
+                            <h6>{formats.mp3}</h6>
+                            <button onClick={() => handleDownload("mp3")}>
+                                <DownloadSvg/>
+                            </button>
+                        </div>
+                    )}
+                    {/* Handle dynamic audio formats if applicable */}
+                    {formats && formats.mp4 &&
+                        Object.entries(formats.mp4).filter(([resolution, size]) => !resolution.includes('p')).map(([resolution, size]) => (
+                            <div key={resolution} className="d-flex justify-content-between">
+                                <h6>{resolution}</h6>
+                                <h6>{size} MB</h6>
+                                <button onClick={() => handleDownload(resolution)}>
+                                    <DownloadSvg/>
                                 </button>
                             </div>
-                        ))}
+                        ))
+                    }
                 </div>
             </div>
         </div>
